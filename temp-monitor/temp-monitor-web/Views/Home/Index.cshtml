@@ -28,19 +28,25 @@
     </div>
 
 <script>
-    $(function() {
+    $(function () {
         var model = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model) as String);
 
-        var chart = new CanvasJS.Chart("chartContainer", {
-            title: {
-                text: "Temperature Data"
-            },
-            data: [{
-                type: "line",
-                dataPoints: model
-            }]
-        });
+        var fixedData = [];
 
-        chart.render();
-    })
+        for (var i = 0; i < model.length; i++) {
+            fixedData.push({
+                temperature: model[i].temperature
+            });
+        }
+
+        var chart = new Chart($("#chartContainer"), {
+            type: 'line',
+            data: {
+                datasets: [{
+                    data: Object.values(fixedData),
+                    backgroundColor: 'rgba(0, 119, 204, 0.3)'
+                }]
+            }
+        });
+    });
 </script>
