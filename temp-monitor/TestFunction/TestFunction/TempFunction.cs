@@ -87,6 +87,7 @@ namespace TestFunction
                                 TempInside = float.Parse(dr["tempinside"].ToString()),
                                 TempOutside = float.Parse(dr["tempoutside"].ToString()),
                                 Pressure = float.Parse(dr["pressure"].ToString()),
+                                TempDate = DateTime.Parse(dr["tempdate"].ToString())
                             });
                         }
                     }
@@ -102,6 +103,7 @@ namespace TestFunction
             public float TempInside { get; set; }
             public float TempOutside { get; set; }
             public float Pressure { get; set; }
+            public DateTime TempDate { get; set; }
         }
     }
 }

@@ -45,6 +45,18 @@ namespace Temp.Monitor.Web.Controllers
                 data = Newtonsoft.Json.JsonConvert.DeserializeObject<List<TemperatureItemModel>>(result);
             }
 
+            string nzTimeZoneKey = "New Zealand Standard Time";
+            TimeZoneInfo nzTimeZone = TimeZoneInfo.FindSystemTimeZoneById(nzTimeZoneKey);
+
+            //get most recent 100 items :D
+            data = data.TakeLast(300).ToList();
+
+            data.ForEach(item => { 
+                item.TempDate = TimeZoneInfo.ConvertTimeFromUtc(item.TempDate, nzTimeZone);
+            });
+
+
+
             return data;
         }
     }
