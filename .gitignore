@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/temp-monitor/temp-monitor-web/bin/Debug/netcoreapp2.1
+/temp-monitor/temp-monitor-web/obj
+/.vs
+/temp-monitor/.vs/temp-monitor
