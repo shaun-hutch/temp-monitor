@@ -6,3 +6,8 @@
 /temp-monitor/temp-monitor-web/obj
 /.vs
 /temp-monitor/.vs/temp-monitor
+/temp-monitor/TestFunction/.vs/TestFunction
+/temp-monitor/TestFunction/TestFunction/bin
+/temp-monitor/TestFunction/TestFunction/obj
+/temp-monitor/TestFunction/TestFunction/local.settings.json
+/temp-monitor/TestFunction/TestFunction.sln
