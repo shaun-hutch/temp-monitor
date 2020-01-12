@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace temp_monitor_web
+namespace Temp.Monitor.Web
 {
     public class Program
     {

@@ -10,8 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace temp_monitor_web
-{
+namespace Temp.Monitor.Web
+{ 
     public class Startup
     {
         public Startup(IConfiguration configuration)

@@ -1,6 +1,6 @@
 using System;
 
-namespace temp_monitor_web.Models
+namespace Temp.Monitor.Web.Models
 {
     public class ErrorViewModel
     {
