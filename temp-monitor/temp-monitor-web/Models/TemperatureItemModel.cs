@@ -8,6 +8,10 @@ namespace Temp.Monitor.Web.Models
     public class TemperatureItemModel
     {
         public float TempInside { get; set; }
+        public float TempOutside { get; set; }
+
+        public float Pressure { get; set; }
+        public DateTime TempDate { get; set; }
     
     }
 

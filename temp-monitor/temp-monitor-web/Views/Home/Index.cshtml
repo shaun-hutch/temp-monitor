@@ -1,6 +1,46 @@
-﻿@{
+﻿@model List<TemperatureItemModel>
+@{
     ViewData["Title"] = "Home Page";
 }
-<div>
-    Home page!
-</div>
+    <div>
+        <h2>Shaun's Temp Logging site</h2>
+
+        <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+
+        <table>
+            <thead>
+            <td>Inside Temp.</td>
+            <td>Outside Temp.</td>
+            <td>Pressure</td>
+            @*<td>Time Logged </td> // to add at same time as date in API call*@
+            </thead>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.TempInside</td>
+                    <td>@item.TempOutside</td>
+                    <td>@item.Pressure</td>
+                    @*<td>@item.TempDate</td> // currently do not have date coming back in API call, TODO :(*@
+                </tr>
+            }
+        </table>
+    </div>
+
+<script>
+    $(function() {
+        var model = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model) as String);
+
+        var chart = new CanvasJS.Chart("chartContainer", {
+            title: {
+                text: "Temperature Data"
+            },
+            data: [{
+                type: "line",
+                dataPoints: model
+            }]
+        });
+
+        chart.render();
+    })
+</script>
