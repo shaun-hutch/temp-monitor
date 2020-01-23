@@ -48,8 +48,8 @@ namespace Temp.Monitor.Web.Controllers
             string nzTimeZoneKey = "New Zealand Standard Time";
             TimeZoneInfo nzTimeZone = TimeZoneInfo.FindSystemTimeZoneById(nzTimeZoneKey);
 
-            //get most recent 100 items :D
-            data = data.TakeLast(300).ToList();
+            //get most recent 300 items :D
+            data = data.OrderBy(x => x.TempDate).TakeLast(300).ToList();
 
             data.ForEach(item => { 
                 item.TempDate = TimeZoneInfo.ConvertTimeFromUtc(item.TempDate, nzTimeZone);

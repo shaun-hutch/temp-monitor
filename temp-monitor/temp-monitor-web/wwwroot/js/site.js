@@ -34,17 +34,20 @@ function setupChart(model) {
             datasets: [{
                 label: "Indoor Temperature",
                 data: insideData,
-                backgroundColor: 'rgba(0, 119, 204, 0.3)'
+                backgroundColor: 'rgba(0, 119, 204, 0.0)',
+                borderColor: 'rgba(0, 119, 204, 0.5)'
             },
             {
                 label: "Outdoor Temperature",
                 data: outsideData,
-                backgroundColor: 'rgba(73, 110, 133, 0.3)'
+                backgroundColor: 'rgba(56, 142, 60, 0.0)',
+                borderColor: 'rgba(56, 142, 60, 0.5)'
             },
             {
                 label: "Humidity",
                 data: humidityData,
-                backgroundColor: 'rgba(228, 30, 30, 0.3)'
+                backgroundColor: 'rgba(228, 30, 30, 0.0)',
+                borderColor: 'rgba(228, 30, 30, 0.5)'
             }]
         }
     });
