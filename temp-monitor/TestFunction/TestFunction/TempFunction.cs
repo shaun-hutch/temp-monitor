@@ -48,7 +48,7 @@ namespace TestFunction
                     {
                         con.Open();
                         SqlCommand cmd = con.CreateCommand();
-                        cmd.CommandText = $"INSERT INTO dbo.Temperature (tempinside, tempoutside, pressure) VALUES ({data.TempInside}, {data.TempOutside}, {data.Pressure})";
+                        cmd.CommandText = $"INSERT INTO dbo.Temperature (tempinside, tempoutside, humidity) VALUES ({data.TempInside}, {data.TempOutside}, {data.Humidity})";
                         result = cmd.ExecuteNonQuery();
                     }
                 }
@@ -86,7 +86,7 @@ namespace TestFunction
                             {
                                 TempInside = float.Parse(dr["tempinside"].ToString()),
                                 TempOutside = float.Parse(dr["tempoutside"].ToString()),
-                                Pressure = float.Parse(dr["pressure"].ToString()),
+                                Humidity = float.Parse(dr["humidity"].ToString()),
                                 TempDate = DateTime.Parse(dr["tempdate"].ToString())
                             });
                         }
@@ -102,7 +102,7 @@ namespace TestFunction
         {
             public float TempInside { get; set; }
             public float TempOutside { get; set; }
-            public float Pressure { get; set; }
+            public float Humidity { get; set;  }
             public DateTime TempDate { get; set; }
         }
     }

@@ -10,7 +10,7 @@ namespace Temp.Monitor.Web.Models
         public float TempInside { get; set; }
         public float TempOutside { get; set; }
 
-        public float Pressure { get; set; }
+        public float Humidity { get; set; }
         public DateTime TempDate { get; set; }
     
     }

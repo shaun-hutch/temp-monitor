@@ -1,35 +1,38 @@
-#define SERIAL_BAUD 115200 //the rate for the ESP chip
+#include <OneWire.h>
+#include <DallasTemperature.h>
+#include <DHT.h>
 
-const int tempPin = A0;
-const int ledPin = 2;
+#define SERIAL_BAUD 115200 //the rate for the ESP chip
+#define DHTPIN 9
+#define DHTTYPE DHT22
+DHT dht(DHTPIN, DHTTYPE);
+
+#define WIREPIN 5
+OneWire oneWire(WIREPIN);
+// pass reference to onewire object instance
+DallasTemperature sensors(&oneWire);
 
 void setup() {
-  pinMode(ledPin, OUTPUT);
-  digitalWrite(ledPin, LOW);
   Serial.begin(SERIAL_BAUD);
-  // put your setup code here, to run once:
-
+  dht.begin();
+  sensors.begin();
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  int sensorVal = analogRead(tempPin);
-  float voltage = (sensorVal / 1024.0) * 5.0;
-  float temperature = (voltage - 0.5) * 100;
+  //index allows for multiple sensors on the same pin
+  sensors.requestTemperatures();
   
-   //fake do stuff
-  Serial.print("[");
-  Serial.print(temperature);
-  Serial.println("]");
-  delay(58000);
+  float outsideTemperature = sensors.getTempCByIndex(0); 
+  float insideTemperature = dht.readTemperature();
+  float humidity = dht.readHumidity();
 
-  if (Serial.available()) {
-    char c = Serial.read();
+  Serial.print("<");
+  Serial.print(insideTemperature);
+  Serial.print(",");
+  Serial.print(outsideTemperature);
+  Serial.print(",");
+  Serial.print(humidity);
+  Serial.println(">");
+  delay(60000);
 
-    if (c == 'Y') {
-      digitalWrite(ledPin, HIGH);
-      delay(2000);
-      digitalWrite(ledPin, LOW);
-    }
-  }
 }

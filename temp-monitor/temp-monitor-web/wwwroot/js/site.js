@@ -4,13 +4,25 @@
 // Write your JavaScript code.
 
 function setupChart(model) {
-    var fixedData = [];
+    var insideData = [];
+    var outsideData = [];
+    var humidityData = [];
     var labels = [];
 
     for (var i = 0; i < model.length; i++) {
         labels.push(model[i].TempDate);
-        fixedData.push({
+        insideData.push({
             y: model[i].TempInside,
+            t: model[i].TempDate
+        });
+
+        outsideData.push({
+            y: model[i].TempOutside,
+            t: model[i].TempDate
+        });
+
+        humidityData.push({
+            y: model[i].Humidity,
             t: model[i].TempDate
         });
     }
@@ -21,8 +33,18 @@ function setupChart(model) {
             labels: labels,
             datasets: [{
                 label: "Indoor Temperature",
-                data: fixedData,
+                data: insideData,
                 backgroundColor: 'rgba(0, 119, 204, 0.3)'
+            },
+            {
+                label: "Outdoor Temperature",
+                data: outsideData,
+                backgroundColor: 'rgba(73, 110, 133, 0.3)'
+            },
+            {
+                label: "Humidity",
+                data: humidityData,
+                backgroundColor: 'rgba(228, 30, 30, 0.3)'
             }]
         }
     });
