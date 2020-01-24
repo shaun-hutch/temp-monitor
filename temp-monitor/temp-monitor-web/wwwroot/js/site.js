@@ -42,8 +42,15 @@ function setupChart(model) {
                 data: outsideData,
                 backgroundColor: 'rgba(56, 142, 60, 0.0)',
                 borderColor: 'rgba(56, 142, 60, 0.5)'
-            },
-            {
+            }]
+        }
+    });
+
+    var chart2 = new Chart($("#humidityContainer"), {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
                 label: "Humidity",
                 data: humidityData,
                 backgroundColor: 'rgba(228, 30, 30, 0.0)',
